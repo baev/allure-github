@@ -51,7 +51,3 @@ jobs:
           ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
           TEST_ENDPOINT: ${{ github.event.inputs.TEST_ENDPOINT }}
           TEST_BROWSER: ${{ github.event.inputs.TEST_BROWSER }}
-      - uses: actions/upload-artifact@v2
-        with:
-          name: github.env
-          path: github.env

@@ -34,7 +34,7 @@ configure<AllureExtension> {
         version = "2.14.0"
     }
 
-    reportDir = project.file("allure-results")
+    resultsDir = project.file("allure-results")
 
 }
 
