@@ -16,6 +16,14 @@ on:
         description: "Inner parameter for Allure TestOps"
         required: false
 
+env:
+  ALLURE_ENDPOINT: ${{ secrets.ALLURE_ENDPOINT }}
+  ALLURE_TOKEN: ${{ secrets.ALLURE_TOKEN }}
+  ALLURE_PROJECT_ID: ${{ secrets.ALLURE_PROJECT_ID }}
+  ALLURE_TESTPLAN_PATH: "./testplan.json"
+  ALLURE_RESULTS: "allure-results"
+  ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
+
 jobs:
   all-tests:
     runs-on: ubuntu-latest
@@ -45,11 +53,6 @@ jobs:
       - name: Build with Gradle
         run: ./allurectl watch -- ./gradlew test
         env:
-          ALLURE_ENDPOINT: ${{ secrets.ALLURE_ENDPOINT }}
-          ALLURE_TOKEN: ${{ secrets.ALLURE_TOKEN }}
-          ALLURE_PROJECT_ID: ${{ secrets.ALLURE_PROJECT_ID }}
-          ALLURE_RESULTS: "allure-results"
           ALLURE_JOB_UID: ${{steps.allure-job-uid.outputs.result}}
-          ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
           TEST_ENDPOINT: ${{ github.event.inputs.TEST_ENDPOINT }}
           TEST_BROWSER: ${{ github.event.inputs.TEST_BROWSER }}
