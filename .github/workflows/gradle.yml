@@ -54,7 +54,7 @@ jobs:
       - name: Build with Gradle
         run: ./allurectl watch -- ./gradlew clean test
       - name: Get environments
-        run: env | grep ALLURE_
+        run: printenv | grep ALLURE_
         env:
           ALLURE_JOB_UID: ${{steps.allure-job-uid.outputs.result}}
           TEST_ENDPOINT: ${{ github.event.inputs.TEST_ENDPOINT }}
